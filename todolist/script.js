@@ -3,6 +3,15 @@ var list = document.getElementById('listId');
 var submitButton = document.getElementById('submit');
 var printedList = document.getElementById('printedList');
 var numOfItems = 0;
+
+var oL = document.querySelector('ol');
+oL.addEventListener('click', function(e){
+  console.log(e.target);
+  if (e.target.nodeName === 'BUTTON'){
+    e.target.parentElement.remove();
+  }
+});
+
 //This adds an input field with a numbered ID unto the form(listID) when called
 function addItem(){
   var newInput = document.createElement('input');
@@ -31,21 +40,19 @@ function printList(xList){
   }
 };
 
-function createXbtn(item){
+function createXbtn(itemOnList){ //Creates a button attached to any item created on the list and adds a an event listener to that button
   var xBtn = document.createElement('button');
   xBtn.className = 'delParent'
   xBtn.innerText = 'X';
-  item.append(xBtn);
+  itemOnList.append(xBtn);
 };
 
-function delParent(){
-  console.log('test');
-}
-
 function clearList(){
+  numOfItems = 0;
   while (list.firstChild) {
   list.removeChild(list.firstChild);
 }
   };
+
 addButton.addEventListener('click', addItem);
 submitButton.addEventListener('click', collectList);

@@ -11,3 +11,8 @@ h1 {
   display:block;
   padding:10px;
 }
+
+.delParent {
+  background-color:red;
+  border-radius:100px;
+}
