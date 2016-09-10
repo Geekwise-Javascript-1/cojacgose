@@ -2,15 +2,10 @@ var addButton = document.getElementById('addItem');
 var list = document.getElementById('listId');
 var submitButton = document.getElementById('submit');
 var printedList = document.getElementById('printedList');
+var oL = document.querySelector('ol');
 var numOfItems = 0;
 
-var oL = document.querySelector('ol');
-oL.addEventListener('click', function(e){
-  console.log(e.target);
-  if (e.target.nodeName === 'BUTTON'){
-    e.target.parentElement.remove();
-  }
-});
+
 
 //This adds an input field with a numbered ID unto the form(listID) when called
 function addItem(){
@@ -36,6 +31,7 @@ function printList(xList){
     var newListItem = document.createElement('li');
     newListItem.innerText = xList[i];
     createXbtn(newListItem);
+    createPrioritybtns(newListItem);
     printedList.append(newListItem);
   }
 };
@@ -46,6 +42,32 @@ function createXbtn(itemOnList){ //Creates a button attached to any item created
   xBtn.innerText = 'X';
   itemOnList.append(xBtn);
 };
+
+function createPrioritybtns(itemOnList){
+  var pBtnU = document.createElement('button');
+  var pBtnD = document.createElement('button');
+  pBtnU.className = 'uBtn';
+  pBtnU.innerText = '^';
+  pBtnD.className = 'dBtn';
+  pBtnD.innerText = 'v';
+  itemOnList.append(pBtnU);
+  itemOnList.append(pBtnD);
+}
+
+oL.addEventListener('click', function(e){ //If the ordered list button is clicked- then remove it's parent which is li
+  if (e.target.className == 'delParent'){
+    e.target.parentElement.remove();
+  } else if(e.target.className == 'uBtn'){
+    e.target.parentElement.parentElement.insertBefore(e.target.parentElement,e.target.parentElement.previousSibling);
+  } else if(e.target.className == 'dBtn'){
+    if(e.target.parentElement.nextSibling == null || e.target.parentElement.nextSibling.nextSibling == null){
+      e.target.parentElement.parentElement.append(e.target.parentElement);
+    }else{
+    e.target.parentElement.parentElement.insertBefore(e.target.parentElement,e.target.parentElement.nextSibling.nextSibling)
+  };
+  };
+});
+
 
 function clearList(){
   numOfItems = 0;
