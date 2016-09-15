@@ -1,18 +1,21 @@
 body {
-  margin-left:20%;
-  margin-right:20%;
+  margin-left:20vw;
+  margin-right:20vw;
 }
-
+.createList, .editList, .saved_lists {
+  float:left;
+  border:solid 5px #114488;
+  margin:3px;
+}
 h1 {
   text-align:center;
 }
-
 .listItem {
   display:block;
-  padding:10px;
+  padding:5px;
 }
-
-.delParent {
-  background-color:red;
+button {
+  background-color:teal;
   border-radius:100px;
+  margin:5px;
 }

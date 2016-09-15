@@ -8,19 +8,31 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>
-    To Do List!!!
-  </h1>
-  <button id="addItem">Add Item!</button>
-  <form id="listId" class="list">
+  <div class="createList">
+    <h1>
+      List-O-Matic
+    </h1>
+    <button id="addItem">Add Item!</button>
+    <form id="listId" class="list">
 
-  </form>
-  <button id="submit">Submit</button>
+    </form>
+    <button id="submit">Submit</button>
+  </div>
+  <div class="editList">
+    <h1>Edit Your List</h1>
+    <ol id="printedList">
 
-  <ol id="printedList">
+    </ol>
+    <button id="savelist">
+      Save List
+    </button>
+  </div>
+  <div class="saved_lists">
+    <h1>List-O-Loader</h1>
+    <ul id="savedLists">
 
-  </ol>
-
+    </ul>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
